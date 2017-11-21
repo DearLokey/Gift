@@ -1,0 +1,33 @@
+#menu1 li {
+	float: left;
+	display: block;
+	cursor: pointer;
+	font-size: 18px;
+	text-align: center;
+	background:#FCC5AA;
+	width:200px;
+	height:40px;
+	border-radius:8px;
+}
+
+#menu1 li.hover {
+	background: #fff;
+	border: 1px solid #CCCCCC;
+}
+
+.main1box {
+	clear: both;
+	margin-top: -1px;
+	border: 1px solid #CCCCCC;
+}
+
+#main1 ul {
+	display: none;
+}
+#main1 li{
+display: block;
+padding-top:20px;
+}
+#main1 ul.block {
+	display: block;
+}

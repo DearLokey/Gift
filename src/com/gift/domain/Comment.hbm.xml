@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.gift.domain.Comment" table="g_comment">
+		<id name="id" column="ID" type="java.lang.Integer">
+			<generator class="increment"></generator>
+		</id>
+		<property name="gift_id" type="java.lang.Integer">
+			<column name="GIFT_ID"></column>
+		</property>
+		<property name="user_account" type="java.lang.String">
+			<column name="USER_ACCOUNT"></column>
+		</property>
+		<property name="content" type="java.lang.String">
+			<column name="CONTENT"></column>
+		</property>
+		<property name="time" type="java.sql.Timestamp">
+			<column name="COMMENT_TIME"></column>
+		</property>
+	</class>
+</hibernate-mapping>

@@ -1,0 +1,73 @@
+﻿body {
+	background: url('../icon/regist_bg.jpg');
+}
+
+body, p, h1, h2, h3, h4, h5, h6, p, ul, ol, li, form, img, dl, dt, dd,
+	table, th, td, blockquote, fieldset, div, strong, label, em {
+	border: 0 none;
+	margin: 0;
+	padding: 0;
+}
+
+ul, ol, li {
+	list-style: none outside none;
+}
+
+input, button {
+	font-size: 14px;
+	margin: 0;
+	vertical-align: middle;
+}
+
+body {
+	font-family: Arial, Helvetica, sans-serif;
+	font-size: 12px;
+	margin: 0 auto;
+}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+b, em, i {
+	font-style: normal;
+	font-weight: normal;
+}
+
+h1, h2, h3, h4 {
+	font-size: 14px;
+	font-style: normal;
+}
+
+h5 {
+	font-size: 12px;
+}
+
+h6 {
+	font-size: 12px;
+	font-weight: normal;
+}
+
+a:link, a:visited {
+	color: #000000;
+	text-decoration: none;
+}
+
+a:hover, a:active {
+	color: #FF0000;
+	text-decoration: underline;
+}
+
+ul, li {
+	list-style: none outside none;
+	margin: 0;
+	padding: 0;
+}
+
+img {
+	border: 0 none;
+	display: block;
+	margin: 0;
+	padding: 0;
+}

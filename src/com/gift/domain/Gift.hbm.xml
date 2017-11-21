@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-mapping PUBLIC 
+    "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+    "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="com.gift.domain.Gift" table="g_gift">
+		<id name="id" column="ID" type="java.lang.Integer">
+			<generator class="increment"></generator>
+		</id>
+		<property name="who_id" type="java.lang.Integer">
+			<column name="WHO_ID"></column>
+		</property>
+		<property name="what_id" type="java.lang.Integer">
+			<column name="WHAT_ID"></column>
+		</property>
+		<property name="name" type="java.lang.String">
+			<column name="NAME"></column>
+		</property>
+		<property name="price" type="java.lang.Double">
+			<column name="PRICE"></column>
+		</property>
+		<property name="picture" type="java.lang.String">
+			<column name="PICTURE"></column>
+		</property>
+		<property name="stock_num" type="java.lang.Integer">
+			<column name="STOCK_NUM"></column>
+		</property>
+		<property name="sales_num" type="java.lang.Integer">
+			<column name="SALES_NUM"></column>
+		</property>
+		<property name="evaluation_num" type="java.lang.Integer">
+			<column name="EVALUATION_NUM"></column>
+		</property>
+		<property name="selling_time" type="java.sql.Timestamp">
+			<column name="SELLING_TIME"></column>
+		</property>
+		<property name="introduction" type="java.lang.String">
+			<column name="INTRODUCTION"></column>
+		</property>
+	</class>
+</hibernate-mapping>

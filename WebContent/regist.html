@@ -1,0 +1,255 @@
+<!DOCTYPE html>
+<html>
+<head>
+<title>个人空间注册</title>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<link href="css/regist.css" rel="stylesheet" type="text/css" />
+<link href="css/font-awesome.min.css" rel="stylesheet" type="text/css">
+<link href="css/bootstrap.min.css" rel="stylesheet" type="text/css">
+<link href="css/regist_style.css" rel="stylesheet" type="text/css">
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<style type="text/css">
+.header {
+	padding-bottom: 5px;
+	width: 765px;
+	border-bottom: #E63EA0 3px solid;
+	margin: 6px auto 0;
+}
+
+.help {
+	margin-top: 15px;
+	float: right;
+	text-align: right;
+}
+
+.clearfix {
+	clear: both;
+}
+
+.wrap {
+	margin-left: auto;
+	width: 765px;
+	margin-right: auto;
+}
+
+.login_main_white {
+	margin-top: 35px;
+	padding-bottom: 30px;
+	color: #E63EA0;
+	font-size: 14px;
+}
+
+.login_main_white li {
+	color: #E63EA0;
+	font-size: 14px;
+	margin: 10px 0 0 30px;
+}
+
+div, img, ol, li, dt, dd {
+	list-style-type: none;
+	border-width: 0;
+	margin: 0;
+	padding: 0;
+}
+
+dl dd {
+	line-height: 30px;
+}
+
+.footet_box {
+	margin: 15px auto;
+	width: 765px;
+}
+
+.footet_dh {
+	background: #f4f4f4;
+	font: 12px "宋体";
+	width: 765px;
+	text-align: center;
+	padding: 10px 0;
+}
+
+.Btn {
+	background: url(image/log_but.gif) no-repeat 0 0;
+	font: bold 14px "宋体";
+	width: 103px;
+	cursor: pointer;
+	color: #fff;
+	height: 31px;
+	border-width: 0;
+}
+
+.log_input2 {
+	border-right: #b8b8b8 1px solid;
+	border-top: #b8b8b8 1px solid;
+	font-size: 12px;
+	background: url(image/inputbg.gif) #fff no-repeat 0 -30px;
+	border-left: #b8b8b8 1px solid;
+	width: 120px;
+	line-height: 16px;
+	border-bottom: #b8b8b8 1px solid;
+	height: 16px;
+}
+</style>
+<script type="text/javascript">
+	$(function() {
+		// 点击登录按钮的事件
+		$('#btn_regist').click(function() {
+			$.ajax({
+				url : "user_regist.do",
+				type : "post",
+				data : {
+					"user.account" : $("#regEmail").val(),
+					"user.password" : $("#password").val(),
+				},
+				dataType : "json",
+				success : function(data) {
+					if (data.regist == "success") {
+						alert("注册成功");
+						window.location.href = "login.html";
+					} else {
+						alert("注册失败");
+					}
+				}
+			});
+		});
+	})
+</script>
+<script type="text/javascript">
+	function checkSubmit() {
+		if (document.regForm.password.value != document.regForm.password2.value) {
+			alert("两次密码不一致");
+			document.regForm.password2.focus();
+			return false;
+		}
+	}
+</script>
+<script type="text/javascript">
+	//定义XMLHttpRequest对象
+	var xmlrequest;
+	//完成XMLHttpRequest对象的初始化
+	function createXMLHttpRequest() {
+		if (window.XMLHttpRequest) {
+			//DOM2浏览器，对所有新的非IE内核浏览器有效
+			xmlrequest = new XMLHttpRequest();
+		} else if (window.ActiveXObject) {
+			//IE浏览器
+			try {
+				//对高版本IE有效
+				xmlrequest = new ActiveXObject("Msxml2.XMLHTTP");
+			} catch (e) {
+				try {
+					//针对IE5和IE6有效
+					xmlrequest = new ActiveXObject("Microsoft.XMLHTTP");
+
+				} catch (e) {
+
+				}
+			}
+		}
+	}
+	function check(input) {
+		var emailValue = document.getElementById("regEmail").value;
+		//初始化XMLHttpRequest对新娘
+		createXMLHttpRequest();
+		//设置请求响应的URL
+		if (emailValue != "") {
+			var uri = "user.do?method=check&email=" + emailValue;
+			//设置处理响应的回调函数，注意千万不要加（）；
+			xmlrequest.onreadystatechange = processResponse;
+			//打开与服务器响应地址的链接
+			xmlrequest.open("GET", uri, true);
+			//发送请求
+			xmlrequest.send(null);
+		}
+	}
+	function processResponse() {
+		//响应完成且响应正常
+		if (xmlrequest.readyState == 4) {
+			if (xmlrequest.status == 200) {
+				//取得服务器端返回的数据
+				var result = xmlrequest.responseText;
+				//alert(result);
+				//后面的span内容设置为从服务器得到的响应数据
+				var show = document.getElementById("show");
+				if (result == "yes") {
+					show.style.color = "green";
+					show.innerHTML = "该邮箱可使用";
+				}
+				if (result == "no") {
+					show.style.color = "red";
+					show.innerHTML = "该邮箱已被使用";
+				}
+			}
+		}
+	}
+</script>
+</head>
+<link rel="icon" href="icon/logo.png">
+<body>
+	<div class="clearfix"></div>
+	<div class="wrap">
+		<div class="login_main_white">
+			<div class="clearfix"></div>
+		</div>
+		<div class="form-group">
+			<div class="col-md-12">
+				<br />
+				<h1 class="margin-bottom-15" style="color: pink;">Dear me</h1>
+				<br /> <br />
+			</div>
+		</div>
+		<form class="form-horizontal templatemo-contact-form-1" role="form"
+			name="regForm" action="user.do?method=regist" method="post"
+			onsubmit="return checkSubmit();">
+			<div class="form-group">
+				<div class="col-md-8">
+					<label for="email" class="control-label">Email *</label>
+					<div class="templatemo-input-icon-container">
+						<input type="email" class="form-control" id="regEmail"
+							name="email" placeholder="输入邮箱" onblur="check(this)" required
+							autofocus /><span id="show"></span>
+					</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-8">
+					<label for="password" class="control-label">Password *</label>
+					<div class="templatemo-input-icon-container">
+						<input type="password" class="form-control" id="password"
+							placeholder="输入密码" required>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<input type="button" id="btn_regist" value="注册"
+						class="btn btn-success pull-right">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-8">
+					<label for="password" class="control-label">Repassword *</label>
+					<div class="templatemo-input-icon-container">
+						<input type="password" class="form-control" name="password2"
+							placeholder="再次输入密码" required>
+					</div>
+				</div>
+				<div class="col-md-4">
+					<input type="reset" value="重置" class="btn btn-warning pull-right">
+				</div>
+			</div>
+			<div class="form-group">
+				<div class="col-md-9"></div>
+				<div class="col-md-3">
+					<a href="login.html"
+						style="color: white; font-size: 20px; font-weight: blod">直接登录</a>
+				</div>
+			</div>
+		</form>
+		<br />
+		<div class="login_main_white">
+			<div class="clearfix"></div>
+		</div>
+	</div>
+</body>
+</html>

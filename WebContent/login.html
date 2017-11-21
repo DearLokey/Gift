@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>主页登陆</title>
+<link href="css/login.css" rel="stylesheet" />
+<link href="css/bootstrap.css" rel="stylesheet" />
+<script type="text/javascript" src="js/jquery-1.9.1.js"></script>
+<script type="text/javascript" src="js/bootstrap.min.js"></script>
+<script type="text/javascript">
+	$(function() {
+		$("#btn_login").click(function() {
+			$.ajax({
+				url : "user_login.do",
+				type : "post",
+				data : {
+					"user.account"  : $("#email").val(),
+					"user.password" : $("#password").val(),
+				},
+				dataType : "json",
+				success : function(data) {
+					if (data.login == "success") {
+						if (data.isAdmin == "no") {
+							alert("用户登录成功");
+							window.location.href = "show_index.do";
+						} else {
+							alert("后台管理员登陆成功");
+							window.location.href = "show_admin.do";
+						}
+					} else {
+						alert("登录失败,请重新登录！");
+					}
+				}
+			});
+		});
+	});
+</script>
+</head>
+<link rel="icon" href="icon/logo.png">
+<body style="margin-top: 60px; background-color: #F7BB99">
+	&nbsp;&nbsp;
+	<a class="btn btn-success" href="regist.html" role="button">注册新用户</a>
+	<br />
+	<br /> &nbsp;&nbsp;
+	<a class="btn btn-success" href="show_index.do" role="button">游客浏览</a>
+	<div id="wrap">
+		<h1>Dear me礼品店</h1>
+		<div id='form_wrap'>
+			<div id="letterBack">
+				<br />
+				<p>
+					<label>邮箱:</label> <input type="email" class="form-control"
+						id="email" required autofocus />
+				</p>
+				<br />
+				<p>
+					<label>密码:</label> <input type="password" class="form-control"
+						id="password" required />
+				</p>
+				<br />
+				<p>
+					<input type="submit" id="btn_login" value="登陆" />
+				</p>
+			</div>
+		</div>
+	</div>
+	<div
+		style="position: fixed; height: 90px; width: 100%; left: 0; bottom: 10px">
+		<div class="footer-banner" style="width: 728px; margin: 0px auto"></div>
+	</div>
+</body>
+</html>
